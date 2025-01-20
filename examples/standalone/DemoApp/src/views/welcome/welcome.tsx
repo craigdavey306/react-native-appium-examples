@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { styles } from './styles';
 import { useAuth } from '../../core/auth';
 
-export const WelcomeView = (): React.JSX.Element => {
+const WelcomeView = (): React.JSX.Element => {
   const { t } = useTranslation();
   const { login } = useAuth();
 
@@ -19,3 +19,5 @@ export const WelcomeView = (): React.JSX.Element => {
     </Surface>
   );
 };
+
+export default WelcomeView;

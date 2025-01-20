@@ -1,1 +1,1 @@
-export * from './todos';
+export { default as TodosView } from './todos';

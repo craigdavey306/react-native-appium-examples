@@ -2,7 +2,7 @@
  * Demo React Native application.
  */
 
-import React, { Suspense } from 'react';
+import React from 'react';
 import { SafeAreaView, StyleSheet, useColorScheme } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import { DarkTheme, LightTheme } from './core/theme';

@@ -1,10 +1,13 @@
 import { StyleSheet } from 'react-native';
+import { Padding } from '../../core/tokens';
 
 export const styles = StyleSheet.create({
   container: {
-    padding: 8,
+    padding: Padding.regular,
+    flex: 1,
     height: '100%',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
+  },
+  todoListContainer: {
+    flex: 1,
   },
 });
