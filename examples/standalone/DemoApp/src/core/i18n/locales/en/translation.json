@@ -1,6 +1,7 @@
 {
   "home": {
     "greeting": "Welcome!",
-    "start": "Press to begin"
+    "start": "Press to begin",
+    "loading": "Loading..."
   }
 }

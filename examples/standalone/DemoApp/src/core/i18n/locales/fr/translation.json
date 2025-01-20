@@ -1,6 +1,7 @@
 {
   "home": {
     "greeting": "Bienvenu!",
-    "start": "Appuyez pour commencer"
+    "start": "Appuyez pour commencer",
+    "loading": "Chargement..."
   }
 }

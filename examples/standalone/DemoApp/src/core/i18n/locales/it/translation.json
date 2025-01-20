@@ -1,6 +1,7 @@
 {
   "home": {
     "greeting": "Benvenutos!",
-    "start": "Premere per iniziare"
+    "start": "Premere per iniziare",
+    "loading": "Caricamento..."
   }
 }
