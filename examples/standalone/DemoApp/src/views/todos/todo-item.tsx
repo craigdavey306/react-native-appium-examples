@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { NativeSyntheticEvent, StyleSheet, View } from 'react-native';
 import {
   Card,
@@ -82,6 +82,7 @@ const TodoItem = ({ item }: TodoItemProps) => {
                 onChangeText={(value) => setDescription(value)}
                 ref={inputRef}
                 style={{ width: '100%' }}
+                testID="updated-todo-description"
                 onEndEditing={handleDescriptionEndEditing}
               />
             </View>
@@ -91,7 +92,8 @@ const TodoItem = ({ item }: TodoItemProps) => {
               icon="trash-can"
               size={ICON_SIZE}
               style={styles.cardActionIcon}
-              testID="delete-contact"
+              testID="delete-item"
+              accessibilityLabel="Delete Item"
               onPress={handleDeleteItem}
             />
           </View>

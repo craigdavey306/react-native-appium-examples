@@ -73,20 +73,20 @@ const ContactsView = (): React.JSX.Element => {
   return (
     <>
       <Appbar.Header statusBarHeight={0}>
-        <Appbar.Content title="Contacts" />
+        <Appbar.Content title="Contacts" testID="contacts-container" />
         <Appbar.Action
           icon="plus"
           onPress={handleAddNewContact}
           disabled={isModalVisible}
+          testID="add-contact-btn"
           accessibilityLabel="Add Contact Button"
-          testID="add-contact"
         />
         <Appbar.Action
           icon="logout-variant"
           onPress={logout}
           disabled={isModalVisible}
+          testID="logout-btn"
           accessibilityLabel="Logout Button"
-          testID="logout"
         />
       </Appbar.Header>
       <Surface style={styles.container} elevation={0}>

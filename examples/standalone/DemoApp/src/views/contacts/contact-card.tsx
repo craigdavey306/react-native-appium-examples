@@ -1,12 +1,8 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { Avatar, Card, IconButton, Text } from 'react-native-paper';
 import { ContactInterface } from '../../models';
-import {
-  formatNameLastFirstMiddle,
-  slugify,
-  slugifyName,
-} from '../../utils/formatters';
+import { formatNameLastFirstMiddle } from '../../utils/formatters';
 import { styles } from './styles';
 import { useContactViewModel } from './contacts-view-model';
 import { DEFAULT_AVATAR_SIZE, ICON_SIZE } from '../../constants';
@@ -72,15 +68,15 @@ const ContactCard = ({
   const formattedName =
     item.name && (item.name.first || item.name.last || item.name.middle)
       ? formatNameLastFirstMiddle(item.name)
-      : item.company;
-  const slugifiedName = item.name
-    ? slugifyName(item.name)
-    : item.company
-    ? slugify(item.company)
-    : 'Unknown';
+      : item.company
+      ? item.company
+      : 'Unknown';
 
   return (
-    <Card style={styles.cardContainer} testID={`contact-card-${slugifiedName}`}>
+    <Card
+      style={styles.cardContainer}
+      // {...getAutomationID('Contact Card')}
+      testID="contact-card">
       <Card.Content>
         <View style={styles.cardContent}>
           {initials && (
@@ -91,16 +87,10 @@ const ContactCard = ({
             />
           )}
           <View style={styles.cardText}>
-            <Text
-              variant="titleMedium"
-              accessibilityHint="Contact Name"
-              testID="contact-name">
+            <Text variant="titleMedium" testID="contact-name">
               {formattedName}
             </Text>
-            <Text
-              variant="labelMedium"
-              accessibilityHint="Contact Phone Number"
-              testID="contact-phone">
+            <Text variant="labelMedium" testID="contact-phone-number">
               {item.phoneNumber}
             </Text>
           </View>
@@ -109,15 +99,17 @@ const ContactCard = ({
               icon="pencil"
               size={ICON_SIZE}
               style={styles.cardActionIcon}
-              testID="edit-contact"
               onPress={handleEditContact}
+              testID="edit-contact-btn"
+              accessibilityLabel="Edit Contact Button"
             />
             <IconButton
               icon="trash-can"
               size={ICON_SIZE}
               style={styles.cardActionIcon}
-              testID="delete-contact"
               onPress={handleDeleteContact}
+              testID="delete-contact-btn"
+              accessibilityLabel="Delete Contact Button"
             />
           </View>
         </View>

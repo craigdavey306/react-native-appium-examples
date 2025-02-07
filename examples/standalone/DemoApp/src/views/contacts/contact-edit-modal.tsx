@@ -40,6 +40,7 @@ const EditContactModal = ({ contact, toggleModal }: EditContactModalProps) => {
     <AppModal isVisible={isVisible} onDismiss={onDismiss}>
       <ContactForm
         contact={contact}
+        mode="edit"
         title="Edit Contact"
         handleCancelButtonPress={handleCancel}
         handleSaveButtonPress={handleSave}

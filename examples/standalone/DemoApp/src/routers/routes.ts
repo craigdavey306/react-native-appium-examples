@@ -6,8 +6,8 @@ export const appRoutes: ReadonlyArray<BottomNavigationRoute> = [
     title: 'Contacts',
     focusedIcon: 'contacts',
     unfocusedIcon: 'contacts-outline',
-    testID: 'contacts-tab',
-    accessibilityLabel: 'Contacts',
+    testID: 'contact-tab',
+    accessibilityLabel: 'Contacts Tab',
   },
   {
     key: 'todos',
@@ -15,6 +15,6 @@ export const appRoutes: ReadonlyArray<BottomNavigationRoute> = [
     focusedIcon: 'view-list',
     unfocusedIcon: 'view-list-outline',
     testID: 'todos-tab',
-    accessibilityLabel: 'To Do List',
+    accessibilityLabel: 'To Do List Tab',
   },
 ];

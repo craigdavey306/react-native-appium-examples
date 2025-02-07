@@ -13,7 +13,7 @@ const WelcomeView = (): React.JSX.Element => {
       <Text variant="displayLarge" testID="welcome-text">
         {t('home.greeting')}
       </Text>
-      <Button onPress={login} mode="contained" testID="start-button">
+      <Button onPress={login} mode="contained" testID="welcome-start-btn">
         {t('home.start')}
       </Button>
     </Surface>

@@ -35,6 +35,7 @@ const AddContactModal = ({ toggleModal }: AddContactModalProps) => {
     <AppModal isVisible={isVisible} onDismiss={onDismiss}>
       <ContactForm
         title="Add Contact"
+        mode="new"
         handleCancelButtonPress={handleCancel}
         handleSaveButtonPress={handleSave}
       />

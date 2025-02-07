@@ -1,7 +1,8 @@
 # Project specific directories and files
 allure-results/
-# debug/
-# test-results/
+debug/
+test-results/
+snapshots/
 
 # OSX
 #
