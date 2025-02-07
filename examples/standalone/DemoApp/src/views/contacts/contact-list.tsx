@@ -6,8 +6,8 @@ import { useContactViewModel } from './contacts-view-model';
 import ContactCard from './contact-card';
 import { Spacer } from '../../components/spacer';
 
-const INITIAL_NUMBER_TO_RENDER = 10;
-const LIST_END_THRESHOLD = 10;
+const INITIAL_NUMBER_TO_RENDER = 7;
+const LIST_END_THRESHOLD = 5;
 const ITEM_HEIGHT = 50;
 
 interface ContactListProps {

@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { Button, Card, TextInput } from 'react-native-paper';
 import _ from 'lodash';
+import { Button, Card, Text, TextInput } from 'react-native-paper';
 import { styles } from './styles';
 import { ContactInterface, ContactName } from '../../models';
-import { formatPhoneNumber } from '../../utils';
+import { formatPhoneNumber, getAutomationID } from '../../utils';
 import { Error } from '../../components/error';
+import { isIos } from '../../constants';
+import { View } from 'react-native';
 
 const MAX_PHONE_LENGTH = 12;
 
 interface ContactFormProps {
   contact?: Partial<ContactInterface>;
   title: string;
+  mode: 'edit' | 'new';
   handleCancelButtonPress: () => void;
   handleSaveButtonPress: (contact: ContactInterface) => void;
 }
@@ -26,6 +29,7 @@ type ContactFormState = {
 const ContactForm = ({
   contact = {},
   title,
+  mode,
   handleCancelButtonPress,
   handleSaveButtonPress,
 }: ContactFormProps) => {
@@ -90,7 +94,8 @@ const ContactForm = ({
 
   const handleSave = (): void => {
     const { isDirty, contact } = formState;
-    let message = 'Please enter a value';
+    let message =
+      mode === 'new' ? 'Please enter a value' : 'Please make an edit';
 
     if (!isDirty || Object.keys(contact).length === 0) {
       updateFormStateErrMsg(message);
@@ -110,13 +115,16 @@ const ContactForm = ({
 
   return (
     <Card contentStyle={{ height: '100%', padding: 16 }}>
-      <Card.Title title={title} titleVariant="titleLarge" />
+      <View testID="contact-form-title">
+        <Card.Title title={title} titleVariant="titleLarge" />
+      </View>
       <Card.Content>
         <TextInput
           label="First Name"
           value={formState.contact.name?.first}
           onChangeText={(value) => updateNamePart({ namePart: 'first', value })}
           style={styles.modalFormItem}
+          testID="contact-form-first-name"
         />
         <TextInput
           label="Middle Name"
@@ -125,18 +133,21 @@ const ContactForm = ({
             updateNamePart({ namePart: 'middle', value })
           }
           style={styles.modalFormItem}
+          testID="contact-form-middle-name"
         />
         <TextInput
           label="Last Name"
           value={formState.contact.name?.last}
           onChangeText={(value) => updateNamePart({ namePart: 'last', value })}
           style={styles.modalFormItem}
+          testID="contact-form-last-name"
         />
         <TextInput
           label="Company"
           value={formState.contact.company}
           onChangeText={(value) => updateCompanyName(value)}
           style={styles.modalFormItem}
+          testID="contact-form-company-name"
         />
         <TextInput
           label="Phone"
@@ -145,11 +156,16 @@ const ContactForm = ({
           inputMode="tel"
           maxLength={MAX_PHONE_LENGTH}
           style={styles.modalFormItem}
+          testID="contact-form-phone-number"
         />
       </Card.Content>
-      <Card.Actions style={{ padding: 20 }}>
-        <Button onPress={handleCancel}>Cancel</Button>
-        <Button onPress={handleSave}>Save</Button>
+      <Card.Actions style={{ padding: 20 }} testID="contact-form-btns">
+        <Button onPress={handleCancel} testID="contact-form-cancel-btn">
+          Cancel
+        </Button>
+        <Button onPress={handleSave} testID="contact-form-save-btn">
+          Save
+        </Button>
       </Card.Actions>
       {formState.error && <Error message={formState.error.message} />}
     </Card>

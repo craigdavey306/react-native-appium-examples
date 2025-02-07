@@ -1,5 +1,6 @@
 import React from 'react';
-import { ActivityIndicator, Surface, Text, useTheme } from 'react-native-paper';
+import { Surface, Text, useTheme } from 'react-native-paper';
+import { getAutomationID } from '../../utils';
 
 interface ErrorProps {
   message: string;
@@ -12,7 +13,8 @@ const Error = ({ message }: ErrorProps): React.JSX.Element => {
     <Surface elevation={0}>
       <Text
         variant="labelMedium"
-        testID="error"
+        // {...getAutomationID('error')}
+        testID="error-text"
         style={{ color: theme.colors.error }}>
         {message}
       </Text>
